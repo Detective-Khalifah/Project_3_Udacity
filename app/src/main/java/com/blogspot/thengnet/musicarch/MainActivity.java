@@ -2,6 +2,7 @@ package com.blogspot.thengnet.musicarch;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -28,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         mediaArrayList.add(new Media("The Batman Theme", "02:38"));
         mediaArrayList.add(new Media("Molossus", "04:49"));
 
+        MediaAdapter mediaListAdapter = new MediaAdapter(this, mediaArrayList);
 
+        ListView mediaList = (ListView) findViewById(R.id.list_media);
+        mediaList.setAdapter(mediaListAdapter);
     }
 }
