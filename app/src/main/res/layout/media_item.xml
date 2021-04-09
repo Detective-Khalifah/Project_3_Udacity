@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/img_thumgnail"
+        android:id="@+id/img_thumbnail"
         android:layout_width="96dp"
         android:layout_height="96dp"
         android:layout_margin="8dp"
@@ -23,9 +23,9 @@
         android:layout_marginStart="8dp"
         android:ellipsize="end"
         android:maxLines="1"
-        app:layout_constraintLeft_toRightOf="@id/img_thumgnail"
+        app:layout_constraintLeft_toRightOf="@id/img_thumbnail"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/img_thumgnail"
+        app:layout_constraintTop_toTopOf="@id/img_thumbnail"
         tools:text="Beethoven's nth Symphony" />
 
     <TextView
@@ -37,7 +37,7 @@
         android:layout_marginStart="8dp"
         android:ellipsize="end"
         android:maxLines="1"
-        app:layout_constraintLeft_toRightOf="@id/img_thumgnail"
+        app:layout_constraintLeft_toRightOf="@id/img_thumbnail"
         app:layout_constraintTop_toBottomOf="@id/tv_title"
         tools:text="00:01" />
 
