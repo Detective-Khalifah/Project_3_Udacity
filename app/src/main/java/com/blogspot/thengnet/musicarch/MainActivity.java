@@ -1,7 +1,10 @@
 package com.blogspot.thengnet.musicarch;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -33,5 +36,16 @@ public class MainActivity extends AppCompatActivity {
 
         ListView mediaList = (ListView) findViewById(R.id.list_media);
         mediaList.setAdapter(mediaListAdapter);
+
+        mediaList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick (AdapterView<?> parent, View view, int position, long id) {
+                Intent play = new Intent(MainActivity.this, PlayerActivity.class);
+                play.putExtra("media-title", mediaArrayList.get(position).getMediaTitle());
+                play.putExtra("media-length", mediaArrayList.get(position).getMediaLength());
+
+                startActivity(play);
+            }
+        });
     }
 }
