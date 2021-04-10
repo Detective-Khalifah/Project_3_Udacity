@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * An {@link ArrayAdapter} subclass for lazily parsing media tracks in a {@link android.widget.ListView}.
+ */
 public class MediaAdapter extends ArrayAdapter<Media> {
 
-    private ImageView imgThumbnail;
     private TextView tvTitle, tvLength;
 
     public MediaAdapter (Context context, List<Media> objects) {
@@ -25,7 +27,6 @@ public class MediaAdapter extends ArrayAdapter<Media> {
             convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.media_item, parent,
                 false);
 
-        imgThumbnail = (ImageView) convertView.findViewById(R.id.img_thumbnail);
         tvTitle = (TextView) convertView.findViewById(R.id.tv_title);
         tvLength = (TextView) convertView.findViewById(R.id.tv_length);
 
