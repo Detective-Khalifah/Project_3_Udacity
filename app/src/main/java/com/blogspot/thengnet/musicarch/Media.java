@@ -1,6 +1,10 @@
 package com.blogspot.thengnet.musicarch;
 
+/**
+ * A Plain Old Java Object class for parsing details of a media track.
+ */
 public class Media {
+
     private String mediaTitle;
     private String mediaLength; // otherwise long -- when Time conversion is set up
 

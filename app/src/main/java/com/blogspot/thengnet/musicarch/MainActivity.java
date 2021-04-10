@@ -18,6 +18,39 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fetchTracks();
+
+        // Initialize {@link ArrayAdapter} with the populated list of tracks.
+        MediaAdapter mediaListAdapter = new MediaAdapter(this, mediaArrayList);
+
+        // Lookup the root {@link ListView}
+        ListView mediaList = (ListView) findViewById(R.id.list_media);
+
+        // Set up the #mediaList {@link ListView} with the {@link ArrayAdapter}
+        mediaList.setAdapter(mediaListAdapter);
+
+        // A "simple click" handler for playing tracks
+        mediaList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick (AdapterView<?> parent, View view, int position, long id) {
+                // Set up an intent to transition to the {@link PlayerActivity}
+                Intent play = new Intent(MainActivity.this, PlayerActivity.class);
+
+                // Load title & length of track selected into the {@link Intent} object.
+                play.putExtra("media-title", mediaArrayList.get(position).getMediaTitle());
+                play.putExtra("media-length", mediaArrayList.get(position).getMediaLength());
+
+                // Fire up the {@link Activity}.
+                startActivity(play);
+            }
+        });
+    }
+
+    /**
+     * Initialize #mediaArrayList {@link ArrayList} object and populate with {@link Media} track
+     * objects.
+     */
+    private void fetchTracks () {
         mediaArrayList = new ArrayList<>();
 
         mediaArrayList.add(new Media("The Dark Knight", "04:49"));
@@ -31,21 +64,5 @@ public class MainActivity extends AppCompatActivity {
         mediaArrayList.add(new Media("Batman, a Duty to Fight/To See", "05:29"));
         mediaArrayList.add(new Media("The Batman Theme", "02:38"));
         mediaArrayList.add(new Media("Molossus", "04:49"));
-
-        MediaAdapter mediaListAdapter = new MediaAdapter(this, mediaArrayList);
-
-        ListView mediaList = (ListView) findViewById(R.id.list_media);
-        mediaList.setAdapter(mediaListAdapter);
-
-        mediaList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick (AdapterView<?> parent, View view, int position, long id) {
-                Intent play = new Intent(MainActivity.this, PlayerActivity.class);
-                play.putExtra("media-title", mediaArrayList.get(position).getMediaTitle());
-                play.putExtra("media-length", mediaArrayList.get(position).getMediaLength());
-
-                startActivity(play);
-            }
-        });
     }
 }
