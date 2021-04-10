@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MusicArch</string>
+    <string name="player_activity_label">Audio Player</string>
+    <string name="main_activity_label">Playlist</string>
 </resources>
